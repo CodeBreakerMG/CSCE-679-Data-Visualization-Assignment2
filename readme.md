@@ -15,7 +15,6 @@ Since D3.js cannot load local CSV files directly due to browser security restric
 1. Open a terminal and navigate to the project folder: cd path/to/temperature-heatmap
 2. Start a local server (Example with Python): python -m http.server 8000
 3. Open a browser and go to: http://localhost:8000
-4. Open a browser and go to the provided URL. 
 
 ## **Usage**
 - The heatmap displays temperature variations by month and year.
