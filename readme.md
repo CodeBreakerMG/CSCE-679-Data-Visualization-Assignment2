@@ -1,14 +1,29 @@
-# CSCE-679-Data-Visualization-Assignment2
+# Temperature Heatmap Visualization - for CSCE679
+# By Manuel Moran Cavero - UIN 3355007151
 
-## Level 1 & 2 (Basic): [Link](./level1.md)
-HK Temperature Heatmap
-![level1](./level1.png)
+This project visualizes temperature data using D3.js. The heatmap represents monthly temperature variations across multiple years, with each square showing temperature trends for a specific month and year. The visualization includes a discrete color legend and temperature ogives.
 
-## Grading:
-1. Correctness (50%): The data visualizations generated should look the same.
-2. Redability (30%): The code should be human-readable (i.e., the name of the variables and functions should be intuitive, and there should be enough comments).
-3. Maintainability (20%): The code should be modulized and easily modified.
+## **Requirements**
+- A modern web browser (Chrome, Firefox, Edge)
+- A local HTTP server (Python recommended)
+- D3.js (included via CDN)
 
-## Submission:
+ ## **How to Run**
+Since D3.js cannot load local CSV files directly due to browser security restrictions, a local HTTP server is required.
 
-Please create a github repository under your github account, and submit the URL of that repository to Canvas.
+### **Using Python (Recommended)**
+1. Open a terminal and navigate to the project folder: cd path/to/temperature-heatmap
+2. Start a local server (Example with Python): python -m http.server 8000
+3. Open a browser and go to: http://localhost:8000
+4. Open a browser and go to the provided URL. 
+
+## **Usage**
+- The heatmap displays temperature variations by month and year.
+- Hover over each square to view detailed temperature information.
+- The color legend on the right indicates temperature ranges.
+- Ogives within each square represent daily max and min temperatures for that month.
+
+## **Notes**
+- Ensure `temperature_daily.csv` is inside the `data/` folder.
+- If the visualization does not load, check the browser console (`F12` → Console) for errors.
+- For best performance, use Google Chrome.
