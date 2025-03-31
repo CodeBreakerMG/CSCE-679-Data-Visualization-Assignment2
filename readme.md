@@ -1,4 +1,5 @@
 # Temperature Heatmap Visualization - for CSCE679
+**TO VISUALIZE THE CORRECTED CODE, PLEASE GO TO BRANCH: **corrected_branch**
 # By Manuel Moran Cavero - UIN 3355007151
 
 This project visualizes temperature data using D3.js. The heatmap represents monthly temperature variations across multiple years, with each square showing temperature trends for a specific month and year. The visualization includes a discrete color legend and temperature ogives.
