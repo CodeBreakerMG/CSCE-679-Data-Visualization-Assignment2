@@ -1,17 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Temperature Heatmap - Level 1</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="https://d3js.org/d3.v6.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Temperature Heatmap</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://d3js.org/d3.v6.min.js"></script>
 </head>
 <body>
-    <h1>Temperature Heatmap - Level 2</h1>
-    
-    <svg id="level1"></svg>  <!-- Level 1 heatmap -->
+  <h1 id="page-title">Temperature Heatmap - Level 1</h1>
+  
+  <button id="toggle-button" onclick="toggleLevel()">Switch to Level 2</button>
+  
+  <svg id="level2" style="display: none;"></svg>
+  <svg id="level1"></svg>
 
-    <script src="js/level1.js"></script>  <!-- Calls Level 1 -->
+  
+
+  <script src="js/level1.js"></script>
+  <script src="js/level2.js"></script>
+
+  <script>
+    let currentLevel = 1;
+
+    function toggleLevel() {
+      const title = document.getElementById("page-title");
+      const btn = document.getElementById("toggle-button");
+      const level1 = document.getElementById("level1");
+      const level2 = document.getElementById("level2");
+
+      if (currentLevel === 1) {
+        level1.style.display = "none";
+        level2.style.display = "block";
+        title.textContent = "Temperature Heatmap - Level 2";
+        btn.textContent = "Switch to Level 1";
+        currentLevel = 2;
+      } else {
+        level2.style.display = "none";
+        level1.style.display = "block";
+        title.textContent = "Temperature Heatmap - Level 1";
+        btn.textContent = "Switch to Level 2";
+        currentLevel = 1;
+      }
+    }
+  </script>
 </body>
 </html>
