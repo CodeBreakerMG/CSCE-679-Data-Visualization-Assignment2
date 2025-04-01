@@ -152,13 +152,15 @@ const legendHeight = 100;
 const legendPadding = 40; // Space from heatmap
 const legendSteps = 10; // Number of discrete steps (squares)
 
- 
+const tempMin = d3.min(data, d => d.max_temperature);
+const tempMax = d3.max(data, d => d.max_temperature);
+
 const legendScale = d3.scaleLinear()
-    .domain([40, 0])                    //   40°C is at the bottom
+    .domain([tempMax, tempMin])                    //   40°C is at the bottom
     .range([legendHeight, 0]);
 
  
-const tempValues = d3.range(0, 41, 40 / legendSteps); // 10 steps from 0°C to 40°C
+const tempValues = d3.range(tempMin, tempMax + 0.01, (tempMax - tempMin) / legendSteps); // 10 steps from 0°C to 40°C
 
 const legendSvg = svgL1.append("g")
     .attr("transform", `translate(${widthL1 + legendPadding}, 0)`);
@@ -174,9 +176,8 @@ legendSvg.selectAll("rect")
     .attr("y", d => legendScale(d) - stepHeight) // Align each square
     .attr("width", legendWidth)
     .attr("height", stepHeight)
-    .attr("fill", d => d3.interpolateOrRd(d / 40)) // Map temp range (0-40°C) to colors
+    .attr("fill", d => d3.interpolateOrRd(d / tempMax)) // Map temp range (0-40°C) to colors
     .attr("stroke", "black"); // Add border for visibility
-
  
 legendSvg.append("text")
     .attr("x", legendWidth / 2  + 25)
@@ -184,8 +185,7 @@ legendSvg.append("text")
     .attr("text-anchor", "middle")
     .attr("font-size", "8px")
     .attr("font-family", "Arial")
- 
-    .text("0 Celsius");
+    .text(String(tempMin) + " Celsius");
 
 legendSvg.append("text")
     .attr("x", legendWidth / 2 + 25)
@@ -193,6 +193,6 @@ legendSvg.append("text")
     .attr("text-anchor", "middle")
     .attr("font-size", "8px")
     .attr("font-family", "Arial")
-    .text("40 Celsius");
+    .text(String(tempMax) + " Celsius");
 
 });
